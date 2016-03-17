@@ -1,13 +1,18 @@
 import java.awt.EventQueue;
+import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Frame;
+import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Panel;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,8 +29,9 @@ import org.jdesktop.swingx.prompt.PromptSupport;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 
-
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 
@@ -99,8 +105,16 @@ public class jpegGUI extends JFrame {
 		
 		JButton uploadBtn = new JButton("LÃ¤gg till");
 		uploadBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent arg0) {
+				FileDialog fDialog = new FileDialog(frame, "Open", FileDialog.LOAD);
+			    fDialog.setVisible(true);
+			    String path = fDialog.getDirectory() + fDialog.getFile();
+			    File f = new File(path);
+			    ImageIcon imageIcon = new ImageIcon(path); // load the image to a imageIcon
+			    Image image = imageIcon.getImage(); // transform it 
+			    Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			    imageIcon = new ImageIcon(newimg);  // transform it back
+			    lblBilden.setIcon(new ImageIcon(newimg));  //lblBilden --> ska vara rätt jlabel-icon i preview...
 			}
 		});
 		uploadBtn.setBounds(300, 31, 71, 47);
@@ -221,6 +235,29 @@ public class jpegGUI extends JFrame {
 		contentPane.add(avbrytBtn);
 		
 		JButton sparaBtn = new JButton("Spara");
+		sparaBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//metod för att öppna sparadialog
+				//välj plats att spara på
+				FileDialog fDialog = new FileDialog(frame, "Save", FileDialog.SAVE);
+		        fDialog.setVisible(true);
+		        String path = fDialog.getDirectory() + fDialog.getFile();
+		        File f = new File(path);
+				try {
+					int width = 700, height = 450;
+					Container c = getContentPane();
+					c.setSize(width, height);
+					BufferedImage bi = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
+				    c.paint(bi.getGraphics());	
+				    ImageIO.write(bi, "PNG", new File(path + ".png"));
+				    //ImageIO.write(bi, "JPEG", new File("c:\\yourImageName.JPG"));
+				    //ImageIO.write(bi, "gif", new File("c:\\yourImageName.GIF"));
+				    //ImageIO.write(bi, "BMP", new File("c:\\yourImageName.BMP"));
+			    } catch (IOException ie) {
+			      ie.printStackTrace();
+			    }
+			}
+		});
 		sparaBtn.setBounds(860, 613, 117, 47);
 		contentPane.add(sparaBtn);
 		
