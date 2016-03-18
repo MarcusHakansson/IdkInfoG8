@@ -54,6 +54,13 @@ public class jpegGUI extends JFrame {
 	private Panel panel;
 	private JTextArea infoTextArea;
 	private JTextArea infoField;
+	private JLabel uploadBildLabel;
+	private static jpegGUI frame;
+	private int width = 220;
+	private int height = 220;
+	
+	
+	
 	
 
 	
@@ -65,7 +72,7 @@ public class jpegGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					jpegGUI frame = new jpegGUI();
+				    frame = new jpegGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -116,7 +123,7 @@ public class jpegGUI extends JFrame {
 			    Image image = imageIcon.getImage(); // transform it 
 			    Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 			    imageIcon = new ImageIcon(newimg);  // transform it back
-			    lblBilden.setIcon(new ImageIcon(newimg));  //lblBilden --> ska vara rätt jlabel-icon i preview...
+			    uploadBildLabel.setIcon(new ImageIcon(newimg));  //lblBilden --> ska vara rï¿½tt jlabel-icon i preview...
 			}
 		});
 		uploadBtn.setBounds(300, 31, 71, 47);
@@ -239,8 +246,8 @@ public class jpegGUI extends JFrame {
 		JButton sparaBtn = new JButton("Spara");
 		sparaBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//metod för att öppna sparadialog
-				//välj plats att spara på
+				//metod fï¿½r att ï¿½ppna sparadialog
+				//vï¿½lj plats att spara pï¿½
 				FileDialog fDialog = new FileDialog(frame, "Save", FileDialog.SAVE);
 		        fDialog.setVisible(true);
 		        String path = fDialog.getDirectory() + fDialog.getFile();
@@ -360,9 +367,14 @@ public class jpegGUI extends JFrame {
 		infoTextArea.setEditable(false);
 		infoTextArea.setLineWrap(true);
 		infoTextArea.setFont(new Font("Futura", Font.PLAIN, 15));
-		infoTextArea.setBounds(173, 101, 183, 219);
+		infoTextArea.setBounds(157, 104, 200, 220);
 		panel.add(infoTextArea);
 		infoTextArea.setOpaque(true);
+		
+		uploadBildLabel = new JLabel("");
+		uploadBildLabel.setBounds(369, 104, width, height);
+		
+		panel.add(uploadBildLabel);
 		
 	}
 }

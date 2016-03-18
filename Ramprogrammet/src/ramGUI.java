@@ -53,6 +53,7 @@ public class ramGUI extends JFrame {
 	public ramGUI() {
 		setMinimumSize(new Dimension(1920, 1080));
 		setSize(new Dimension(1920, 1080));
+		this.setUndecorated(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 861, 624);
