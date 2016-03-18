@@ -47,7 +47,7 @@ public class ramGUI extends JFrame {
 
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 861, 624);
+		setBounds(0, 0, 861, 624);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.desktop);
