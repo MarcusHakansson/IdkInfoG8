@@ -40,6 +40,7 @@ public class ramGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ramGUI() {
+		
 		setMinimumSize(new Dimension(1920, 1080));
 		setSize(new Dimension(1920, 1080));
 		this.setUndecorated(true);
@@ -68,7 +69,7 @@ public class ramGUI extends JFrame {
 		contentPane.add(panel);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Jakob\\Documents\\GitHub\\IdkInfoG8\\Ramprogrammet\\src\\sommarkurser.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("/Users/Marcus/Documents/STUDIER/IxD/PROGRAMMING/GitHub/IdkInfoG8/Ramprogrammet/src/sommarkurser.jpg"));
 		lblNewLabel.setBounds(0, 0, 1920, 1080);
 		contentPane.add(lblNewLabel);
 
