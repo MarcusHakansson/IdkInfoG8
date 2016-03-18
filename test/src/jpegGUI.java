@@ -52,6 +52,8 @@ public class jpegGUI extends JFrame {
 	private JLabel datumlabel;
 	private JLabel tidLabel;
 	private Panel panel;
+	private JTextArea infoTextArea;
+	private JTextArea infoField;
 	
 
 	
@@ -262,10 +264,16 @@ public class jpegGUI extends JFrame {
 		contentPane.add(sparaBtn);
 		
 		JButton infoBtn = new JButton("Lägg till");
+		infoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				infoTextArea.setText(infoField.getText());
+			}
+		});
 		infoBtn.setBounds(866, 412, 111, 189);
 		contentPane.add(infoBtn);
 		
-		JTextArea infoField = new JTextArea();
+		infoField = new JTextArea();
 		infoField.setFont(new Font("Futura", Font.PLAIN, 15));
 		infoField.setBounds(6, 412, 846, 189);
 		contentPane.add(infoField);
@@ -288,6 +296,7 @@ public class jpegGUI extends JFrame {
 		panel.setBounds(377, 31, 613, 369);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
 		
 		
 		rubrikLabel = new JLabel("");
@@ -344,14 +353,16 @@ public class jpegGUI extends JFrame {
 		platsLabel = new JLabel("");
 		platsLabel.setFont(new Font("Futura", Font.PLAIN, 15));
 		platsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		platsLabel.setBounds(82, 141, 120, 21);
+		platsLabel.setBounds(82, 141, 69, 21);
 		panel.add(platsLabel);
 		
-		
-		
-		
-	
+		infoTextArea = new JTextArea();
+		infoTextArea.setEditable(false);
+		infoTextArea.setLineWrap(true);
+		infoTextArea.setFont(new Font("Futura", Font.PLAIN, 15));
+		infoTextArea.setBounds(173, 101, 183, 219);
+		panel.add(infoTextArea);
+		infoTextArea.setOpaque(true);
 		
 	}
-
 }
