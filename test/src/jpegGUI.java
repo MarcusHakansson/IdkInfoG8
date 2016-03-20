@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -56,8 +57,8 @@ public class jpegGUI extends JFrame {
 	private JTextArea infoField;
 	private JLabel uploadBildLabel;
 	private static jpegGUI frame;
-	private int width = 220;
-	private int height = 220;
+	private int width = 500;
+	private int height = 500;
 	
 	
 	/**
@@ -84,26 +85,20 @@ public class jpegGUI extends JFrame {
 	public jpegGUI() {
 			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 700);
+		setBounds(100, 100, 1435, 808);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		//PromptSupport.setPrompt("Välj en bild", uploadField);
 		
-		
-		uploadField = new JTextField();
-		uploadField.setFont(new Font("Futura", Font.PLAIN, 15));
-		uploadField.setBounds(6, 31, 282, 47);
-		contentPane.add(uploadField);
-		uploadField.setColumns(10);
-		PromptSupport.setPrompt("Välj en bild", uploadField);
-		
-		JLabel lblNewLabel = new JLabel(" Välj bild från din dator:");
+		JLabel lblNewLabel = new JLabel("Bilden ska helst vara 500 x 500 pixlar:");
 		lblNewLabel.setFont(new Font("Futura", Font.PLAIN, 16));
 		lblNewLabel.setBounds(6, 6, 282, 26);
 		contentPane.add(lblNewLabel);
 		
-		JButton uploadBtn = new JButton("Lägg till");
+		JButton uploadBtn = new JButton("V\u00E4lj bild fr\u00E5n din dator");
+		uploadBtn.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		uploadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FileDialog fDialog = new FileDialog(frame, "Open", FileDialog.LOAD);
@@ -117,12 +112,14 @@ public class jpegGUI extends JFrame {
 			    uploadBildLabel.setIcon(new ImageIcon(newimg));  //lblBilden --> ska vara r�tt jlabel-icon i preview...
 			}
 		});
-		uploadBtn.setBounds(300, 31, 71, 47);
+		uploadBtn.setBounds(6, 31, 365, 47);
 		contentPane.add(uploadBtn);
 		
-		JButton rubrikBtn = new JButton("Lägg till");
+		JButton rubrikBtn = new JButton("Ok");
 		rubrikBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				rubrikLabel.setForeground(Color.BLACK);
 				
 				rubrikLabel.setText(rubrikField.getText());
 				String i = rubrikField.getText();
@@ -133,15 +130,15 @@ public class jpegGUI extends JFrame {
                 
 				rubrikField.setText("");
 				
-				rubriklabel3 = new JLabel("", rubriklabel3.CENTER);
+				rubriklabel3 = new JLabel("", rubriklabel3.LEFT);
 				rubriklabel3.setForeground(Color.white);
-				rubriklabel3.setHorizontalAlignment(SwingConstants.CENTER);
-				rubriklabel3.setBounds(347-(textWidth/2), 25, textWidth+10, 47);
+				rubriklabel3.setHorizontalAlignment(SwingConstants.LEFT);
+				rubriklabel3.setBounds(247-(textWidth/2), 25, textWidth+10, 47);
 				
 				panel.add(rubriklabel3);
 				rubriklabel3.setOpaque(true);
 				
-				System.out.println(i+"=" + textWidth);
+				//System.out.println(i+"=" + textWidth);
 				
 			}
 		});
@@ -156,24 +153,24 @@ public class jpegGUI extends JFrame {
 		rubrikField.setColumns(10);
 		rubrikField.setBounds(6, 115, 282, 47);
 		contentPane.add(rubrikField);
-		PromptSupport.setPrompt("E.g. Sommarkurser i Niagara", rubrikField);
+		//PromptSupport.setPrompt("E.g. Sommarkurser i Niagara", rubrikField);
 		
 		JLabel lblRubrik = new JLabel(" Rubrik:\n");
 		lblRubrik.setFont(new Font("Futura", Font.PLAIN, 16));
 		lblRubrik.setBounds(6, 90, 282, 26);
 		contentPane.add(lblRubrik);
 		
-		JButton datumTidBtn = new JButton("Lägg till");
+		JButton datumTidBtn = new JButton("Ok");
 		datumTidBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				datumlabel.setText(datumField.getText());
+				//datumlabel.setText(datumField.getText());
 				tidLabel.setText(tidField.getText());
 				
-				datumField.setText("");
+				//datumField.setText("");
 				tidField.setText("");
 				
-				datumlabel.setOpaque(true);
+				//datumlabel.setOpaque(true);
 				tidLabel.setOpaque(true);
 			
 			}
@@ -184,8 +181,8 @@ public class jpegGUI extends JFrame {
 		datumField.setFont(new Font("Futura", Font.PLAIN, 15));
 		datumField.setColumns(10);
 		contentPane.add(datumField);
-		datumField.setBounds(6, 284, 138, 47);
-		PromptSupport.setPrompt("E.g. DD/MM -16", datumField);
+		datumField.setBounds(6, 284, 117, 47);
+		//PromptSupport.setPrompt("E.g. DD/MM -16", datumField);
 		
 		
 		
@@ -194,7 +191,7 @@ public class jpegGUI extends JFrame {
 		lblDatum.setBounds(6, 259, 117, 26);
 		contentPane.add(lblDatum);
 		
-		JButton platsBtn = new JButton("Lägg till");
+		JButton platsBtn = new JButton("Ok");
 		platsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -213,7 +210,7 @@ public class jpegGUI extends JFrame {
 		platsField.setColumns(10);
 		platsField.setBounds(6, 199, 282, 47);
 		contentPane.add(platsField);
-		PromptSupport.setPrompt("E.g. Plats", platsField);
+		//PromptSupport.setPrompt("E.g. Plats", platsField);
 		
 		JLabel lblPlats = new JLabel(" Plats:");
 		lblPlats.setFont(new Font("Futura", Font.PLAIN, 16));
@@ -222,19 +219,27 @@ public class jpegGUI extends JFrame {
 		
 		JLabel lblTid = new JLabel(" Tid");
 		lblTid.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblTid.setBounds(171, 259, 43, 26);
+		lblTid.setBounds(193, 259, 43, 26);
 		contentPane.add(lblTid);
 		
 		JLabel lblInformation = new JLabel("Information");
 		lblInformation.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblInformation.setBounds(6, 374, 282, 26);
+		lblInformation.setBounds(6, 347, 282, 26);
 		contentPane.add(lblInformation);
 		
-		JButton avbrytBtn = new JButton("Avbryt");
-		avbrytBtn.setBounds(726, 613, 117, 47);
-		contentPane.add(avbrytBtn);
-		
-		JButton sparaBtn = new JButton("Spara");
+		//JButton avbrytBtn = new JButton("Avbryt");
+		//avbrytBtn.setBounds(726, 613, 117, 47);
+		//contentPane.add(avbrytBtn);
+
+		panel = new Panel();
+		panel.setBackground(Color.DARK_GRAY);
+		panel.setBounds(377, 31, 1000, 650);
+		contentPane.add(panel);
+		panel.setLayout(null);
+				
+		JButton sparaBtn = new JButton("Spara bilden");
+		sparaBtn.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		sparaBtn.setBackground(Color.RED);
 		sparaBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//metod f�r att �ppna sparadialog
@@ -244,7 +249,7 @@ public class jpegGUI extends JFrame {
 		        String path = fDialog.getDirectory() + fDialog.getFile();
 		        File f = new File(path);
 				try {
-					int width = 700, height = 450;
+					int width = 1000, height = 650;
 					Container c = getContentPane();
 					c = panel;
 					c.setSize(width, height);
@@ -259,51 +264,47 @@ public class jpegGUI extends JFrame {
 			    }
 			}
 		});
-		sparaBtn.setBounds(860, 613, 117, 47);
+		sparaBtn.setBounds(1194, 689, 183, 47);
 		contentPane.add(sparaBtn);
 		
-		JButton infoBtn = new JButton("Lägg till");
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(6, 377, 365, 359);
+		contentPane.add(scrollPane);
+		
+		JTextArea infoField = new JTextArea();
+		infoField.setWrapStyleWord(true);
+		infoField.setLineWrap(true);
+		scrollPane.setViewportView(infoField);
+		
+		JButton infoBtn = new JButton("Ok");
 		infoBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				infoTextArea.setText(infoField.getText());
 			}
 		});
-		infoBtn.setBounds(866, 412, 111, 189);
+		infoBtn.setBounds(377, 689, 65, 47);
 		contentPane.add(infoBtn);
-		
-		infoField = new JTextArea();
-		infoField.setFont(new Font("Futura", Font.PLAIN, 15));
-		infoField.setBounds(6, 412, 846, 189);
-		contentPane.add(infoField);
 		
 		tidField = new JTextField();
 		tidField.setFont(new Font("Futura", Font.PLAIN, 15));
 		tidField.setColumns(10);
-		tidField.setBounds(171, 284, 117, 47);
+		tidField.setBounds(193, 284, 104, 47);
 		contentPane.add(tidField);
-		PromptSupport.setPrompt("E.g. 12:00", tidField);
+		//PromptSupport.setPrompt("E.g. 12:00", tidField);
 		
 		
-		JLabel lblFrhandsgrandska = new JLabel("Förhandsgrandska\n");
+		JLabel lblFrhandsgrandska = new JLabel("F\u00F6rhandsgrandska\r\n");
 		lblFrhandsgrandska.setFont(new Font("Futura", Font.PLAIN, 16));
 		lblFrhandsgrandska.setBounds(383, -1, 150, 26);
 		contentPane.add(lblFrhandsgrandska);
 		
-		panel = new Panel();
-		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(377, 31, 613, 369);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		
-		
-		rubrikLabel = new JLabel("");
+		rubrikLabel = new JLabel("Skriv en lockande rubrik");
 		rubrikLabel.setBackground(Color.DARK_GRAY);
 		rubrikLabel.setFont(new Font("Futura", Font.PLAIN, 28));
-		rubrikLabel.setForeground(Color.BLACK);
-		rubrikLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		rubrikLabel.setBounds(118, 25, 468, 47);
+		rubrikLabel.setForeground(Color.WHITE);
+		rubrikLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		rubrikLabel.setBounds(157, 16, 714, 53);
 		panel.add(rubrikLabel);
 		
 		
@@ -315,20 +316,20 @@ public class jpegGUI extends JFrame {
 		datumlabel = new JLabel("");
 		datumlabel.setFont(new Font("Futura", Font.PLAIN, 15));
 		datumlabel.setHorizontalAlignment(SwingConstants.CENTER);
-		datumlabel.setBounds(82, 174, 69, 21);
+		datumlabel.setBounds(6, 363, 100, 21);
 		panel.add(datumlabel);
 		
 		tidLabel = new JLabel("");
 		tidLabel.setFont(new Font("Futura", Font.PLAIN, 15));
 		tidLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		tidLabel.setBounds(82, 207, 69, 21);
+		tidLabel.setBounds(6, 467, 100, 21);
 		panel.add(tidLabel);
 		
 		JLabel label = new JLabel("PLATS: ");
 		label.setBackground(Color.WHITE);
 		label.setFont(new Font("Futura", Font.PLAIN, 15));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(6, 141, 69, 21);
+		label.setBounds(6, 235, 69, 21);
 		panel.add(label);
 		label.setOpaque(true);
 		
@@ -337,7 +338,7 @@ public class jpegGUI extends JFrame {
 		label_1.setBackground(Color.WHITE);
 		label_1.setFont(new Font("Futura", Font.PLAIN, 15));
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setBounds(6, 174, 69, 21);
+		label_1.setBounds(6, 333, 69, 21);
 		panel.add(label_1);
 		label_1.setOpaque(true);
 		
@@ -345,28 +346,49 @@ public class jpegGUI extends JFrame {
 		label_2.setBackground(Color.WHITE);
 		label_2.setFont(new Font("Futura", Font.PLAIN, 15));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setBounds(6, 207, 69, 21);
+		label_2.setBounds(6, 430, 69, 21);
 		panel.add(label_2);
 		label_2.setOpaque(true);
 		
 		platsLabel = new JLabel("");
 		platsLabel.setFont(new Font("Futura", Font.PLAIN, 15));
 		platsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		platsLabel.setBounds(82, 141, 69, 21);
+		platsLabel.setBounds(6, 268, 100, 21);
 		panel.add(platsLabel);
 		
 		infoTextArea = new JTextArea();
+		infoTextArea.setText("H\u00E4r hamnar din informationstext.");
+		infoTextArea.setWrapStyleWord(true);
 		infoTextArea.setEditable(false);
 		infoTextArea.setLineWrap(true);
 		infoTextArea.setFont(new Font("Futura", Font.PLAIN, 15));
-		infoTextArea.setBounds(157, 104, 200, 220);
+		infoTextArea.setBounds(157, 85, 319, 500);
 		panel.add(infoTextArea);
 		infoTextArea.setOpaque(true);
 		
-		uploadBildLabel = new JLabel("");
-		uploadBildLabel.setBounds(369, 104, width, height);
+		uploadBildLabel = new JLabel("Din bild: \n500 x 500 pixlar");
+		uploadBildLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		uploadBildLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		uploadBildLabel.setForeground(Color.WHITE);
+		uploadBildLabel.setBounds(491, 85, 500, 500);
 		
 		panel.add(uploadBildLabel);
+		
+		JButton button = new JButton("Ok");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				datumlabel.setText(datumField.getText());
+				//tidLabel.setText(tidField.getText());
+				
+				datumField.setText("");
+				//tidField.setText("");
+				
+				datumlabel.setOpaque(true);
+				//tidLabel.setOpaque(true);
+			}
+		});
+		button.setBounds(125, 284, 53, 47);
+		contentPane.add(button);
 		
 	}
 }
