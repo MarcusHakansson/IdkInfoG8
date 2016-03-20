@@ -246,6 +246,7 @@ public class jpegGUI extends JFrame {
 				try {
 					int width = 700, height = 450;
 					Container c = getContentPane();
+					c = panel;
 					c.setSize(width, height);
 					BufferedImage bi = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
 				    c.paint(bi.getGraphics());	
