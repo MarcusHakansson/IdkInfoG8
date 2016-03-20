@@ -272,6 +272,7 @@ public class jpegGUI extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JTextArea infoField = new JTextArea();
+		infoField.setBorder(new EmptyBorder(10, 10, 10, 10));
 		infoField.setWrapStyleWord(true);
 		infoField.setLineWrap(true);
 		scrollPane.setViewportView(infoField);
@@ -357,6 +358,7 @@ public class jpegGUI extends JFrame {
 		panel.add(platsLabel);
 		
 		infoTextArea = new JTextArea();
+		infoTextArea.setBorder(new EmptyBorder(10, 10, 10, 10));
 		infoTextArea.setText("H\u00E4r hamnar din informationstext.");
 		infoTextArea.setWrapStyleWord(true);
 		infoTextArea.setEditable(false);
@@ -389,6 +391,8 @@ public class jpegGUI extends JFrame {
 		});
 		button.setBounds(125, 284, 53, 47);
 		contentPane.add(button);
+		
+
 		
 	}
 }
