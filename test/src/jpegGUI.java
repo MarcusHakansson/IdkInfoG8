@@ -60,11 +60,6 @@ public class jpegGUI extends JFrame {
 	private int height = 220;
 	
 	
-	
-	
-
-	
-
 	/**
 	 * Launch the application.
 	 */
@@ -87,11 +82,7 @@ public class jpegGUI extends JFrame {
 	
 	
 	public jpegGUI() {
-		
-	
-		
-		
-		
+			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();
