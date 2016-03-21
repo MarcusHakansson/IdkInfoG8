@@ -1,15 +1,11 @@
 # IdkInfoG8
 
-Group members:
-Kelly Gelevska
-Marianne Bansell
-Jakob Håkonsson
-Mattias Wendt
-Marcus Håkansson
+Here can you read and follow along in our school work.
 
-Vision  
-To improv and develop the information on the four screens outside of the Mah Högskolas reception.  
-  
-Goal  
-The info on the screens should be relevant, niceley presented and occasionally a bit funny.   
+This project was developed by Marcus Håkansson, Marianne Bansell, Jakob Håkonsson, Mattias Wendt and Kelly Gelevska. We are interaction design students at Malmö University, Sweden.
 
+Vision:
+To improve and develop the information on one of the screens outside of the Mah Högskolans reception.
+
+Goal:
+Fixed a png programs to facilitate those sitting in the reception. The information should be relevant, informative and enticing.
