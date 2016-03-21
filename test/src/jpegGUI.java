@@ -26,7 +26,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 
-import org.jdesktop.swingx.prompt.PromptSupport;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
