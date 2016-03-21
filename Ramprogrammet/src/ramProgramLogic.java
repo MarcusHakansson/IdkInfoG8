@@ -13,6 +13,8 @@ public class ramProgramLogic {
 		this.RamGUI = ClockGUI;
 		new ClockThread().start();
 	}
+	
+	
 
 	public class ClockThread extends Thread {
 

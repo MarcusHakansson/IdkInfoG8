@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,8 +8,10 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.awt.SystemColor;
+import java.io.File;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 
 public class ramGUI extends JFrame {
 
@@ -39,12 +41,16 @@ public class ramGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+
+
 	public ramGUI() {
 		
 		setMinimumSize(new Dimension(1920, 1080));
 		setSize(new Dimension(1920, 1080));
 		this.setUndecorated(true);
-
+		
+		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 861, 624);
@@ -70,13 +76,27 @@ public class ramGUI extends JFrame {
 		contentPane.add(panel);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ramGUI.class.getResource("/test/sommarkurser.jpg")));
+		//lblNewLabel.setIcon(new ImageIcon(ramGUI.class.getResource("/test/sommarkurser.jpg")));
+		//lblNewLabel.setIcon(new ImageIcon(ramGUI.class.getResource("/test/sommarkurser.jpg")));
 		lblNewLabel.setBounds(0, 0, 1920, 1080);
 		contentPane.add(lblNewLabel);
-
+		File f = new File("C:\\Users\\Jakob\\Documents\\GitHub\\IdkInfoG8\\Ramprogrammet\\scr\\");
+		
+		System.out.println("Path"+f.getAbsolutePath());
+		 File[] fileArray =f.listFiles();
+		 if(fileArray!=null){
+			 for(int i =0; i<fileArray.length; i++){
+				 String name = fileArray[i].getName();
+				 System.out.println("name: "+name +" "+ fileArray[i].getAbsolutePath());
+				 lblNewLabel.setIcon(new ImageIcon(ramGUI.class.getResource(fileArray[i].getAbsolutePath())));
+			 }
+		 }
 		ramprogramLogic = new ramProgramLogic(this);
 
 	}
+
+
+
 
 	public void setTimeOnLabel(String AlarmTime) {
 		// TODO Auto-generated method stub
