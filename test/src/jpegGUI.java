@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Panel;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -83,21 +84,26 @@ public class jpegGUI extends JFrame {
 	
 	public jpegGUI() {
 			
+		setIconImage(Toolkit.getDefaultToolkit().getImage(CopyTestPng.class.getResource("/Bilder/MAH_logotyp_original.jpg")));
+		setTitle("MAH Infomall");
+		setResizable(false);
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1435, 808);
+		setBounds(100, 100, 1565, 799);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		//PromptSupport.setPrompt("Välj en bild", uploadField);
 		
-		JLabel lblNewLabel = new JLabel("Bilden ska helst vara 500 x 500 pixlar:");
+		JLabel lblNewLabel = new JLabel("Bilden ska helst vara 550 x 500 pixlar:");
 		lblNewLabel.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblNewLabel.setBounds(6, 6, 282, 26);
+		lblNewLabel.setBounds(6, 10, 282, 26);
 		contentPane.add(lblNewLabel);
 		
 		JButton uploadBtn = new JButton("V\u00E4lj bild fr\u00E5n din dator");
-		uploadBtn.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		uploadBtn.setFont(new Font("Futura Hv BT", Font.PLAIN, 20));
 		uploadBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FileDialog fDialog = new FileDialog(frame, "Open", FileDialog.LOAD);
@@ -106,36 +112,36 @@ public class jpegGUI extends JFrame {
 			    File f = new File(path);
 			    ImageIcon imageIcon = new ImageIcon(path); // load the image to a imageIcon
 			    Image image = imageIcon.getImage(); // transform it 
-			    Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			    Image newimg = image.getScaledInstance(widthPreviewImage, heightPreviewImage,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 			    imageIcon = new ImageIcon(newimg);  // transform it back
 			    uploadBildLabel.setIcon(new ImageIcon(newimg));  //lblBilden --> ska vara r�tt jlabel-icon i preview...
 			}
 		});
-		uploadBtn.setBounds(6, 31, 365, 47);
+		uploadBtn.setBounds(6, 41, 365, 47);
 		contentPane.add(uploadBtn);
 		
 		JButton rubrikBtn = new JButton("Ok");
+		rubrikBtn.setFont(new Font("Futura Hv BT", Font.PLAIN, 16));
 		rubrikBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				rubrikLabel.setForeground(Color.BLACK);
 				
 				rubrikLabel.setText(rubrikField.getText());
-				String i = rubrikField.getText();
-				
-				FontMetrics fm = rubrikLabel.getFontMetrics(rubrikLabel.getFont());
-                int textWidth = fm.stringWidth(i);
+				//String i = rubrikField.getText();
+				//FontMetrics fm = rubrikLabel.getFontMetrics(rubrikLabel.getFont());
+                //int textWidth = fm.stringWidth(i);
                 //int textStart = fm.
                 
 				rubrikField.setText("");
 				
-				rubriklabel3 = new JLabel("", rubriklabel3.LEFT);
-				rubriklabel3.setForeground(Color.white);
-				rubriklabel3.setHorizontalAlignment(SwingConstants.LEFT);
-				rubriklabel3.setBounds(247-(textWidth/2), 25, textWidth+10, 47);
+				//rubriklabel3 = new JLabel("", rubriklabel3.LEFT);
+				//rubriklabel3.setForeground(Color.white);
+				//rubriklabel3.setHorizontalAlignment(SwingConstants.LEFT);
+				//rubriklabel3.setBounds(247-(textWidth/2), 25, textWidth+10, 47);
 				
-				panel.add(rubriklabel3);
-				rubriklabel3.setOpaque(true);
+				//panel.add(rubriklabel3);
+				//rubriklabel3.setOpaque(true);
 				
 				//System.out.println(i+"=" + textWidth);
 				
@@ -143,54 +149,49 @@ public class jpegGUI extends JFrame {
 		});
 
 		
-		rubrikBtn.setBounds(300, 115, 71, 47);
+		rubrikBtn.setBounds(300, 125, 71, 47);
 		contentPane.add(rubrikBtn);
 		
 		rubrikField = new JTextField();
 		rubrikField.setToolTipText("TEST");
 		rubrikField.setFont(new Font("Futura", Font.PLAIN, 15));
 		rubrikField.setColumns(10);
-		rubrikField.setBounds(6, 115, 282, 47);
+		rubrikField.setBounds(6, 125, 282, 47);
 		contentPane.add(rubrikField);
 		//PromptSupport.setPrompt("E.g. Sommarkurser i Niagara", rubrikField);
 		
 		JLabel lblRubrik = new JLabel(" Rubrik:\n");
 		lblRubrik.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblRubrik.setBounds(6, 90, 282, 26);
+		lblRubrik.setBounds(6, 97, 282, 26);
 		contentPane.add(lblRubrik);
 		
 		JButton datumTidBtn = new JButton("Ok");
+		datumTidBtn.setFont(new Font("Futura Hv BT", Font.PLAIN, 16));
 		datumTidBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//datumlabel.setText(datumField.getText());
 				tidLabel.setText(tidField.getText());
-				
-				//datumField.setText("");
 				tidField.setText("");
-				
-				//datumlabel.setOpaque(true);
 				tidLabel.setOpaque(true);
-			
 			}
 		});
-		datumTidBtn.setBounds(300, 284, 71, 47);
+		datumTidBtn.setBounds(300, 292, 71, 47);
 		contentPane.add(datumTidBtn);
 		datumField = new JTextField();
 		datumField.setFont(new Font("Futura", Font.PLAIN, 15));
 		datumField.setColumns(10);
 		contentPane.add(datumField);
-		datumField.setBounds(6, 284, 117, 47);
+		datumField.setBounds(6, 292, 117, 47);
 		//PromptSupport.setPrompt("E.g. DD/MM -16", datumField);
 		
 		
 		
 		JLabel lblDatum = new JLabel(" Datum\n");
 		lblDatum.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblDatum.setBounds(6, 259, 117, 26);
+		lblDatum.setBounds(6, 262, 117, 26);
 		contentPane.add(lblDatum);
 		
 		JButton platsBtn = new JButton("Ok");
+		platsBtn.setFont(new Font("Futura Hv BT", Font.PLAIN, 16));
 		platsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -201,29 +202,29 @@ public class jpegGUI extends JFrame {
 				
 			}
 		});
-		platsBtn.setBounds(300, 200, 71, 47);
+		platsBtn.setBounds(300, 210, 71, 47);
 		contentPane.add(platsBtn);
 		
 		platsField = new JTextField();
 		platsField.setFont(new Font("Futura", Font.PLAIN, 15));
 		platsField.setColumns(10);
-		platsField.setBounds(6, 199, 282, 47);
+		platsField.setBounds(6, 210, 282, 47);
 		contentPane.add(platsField);
 		//PromptSupport.setPrompt("E.g. Plats", platsField);
 		
 		JLabel lblPlats = new JLabel(" Plats:");
 		lblPlats.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblPlats.setBounds(6, 174, 138, 26);
+		lblPlats.setBounds(6, 178, 138, 26);
 		contentPane.add(lblPlats);
 		
 		JLabel lblTid = new JLabel(" Tid");
 		lblTid.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblTid.setBounds(193, 259, 43, 26);
+		lblTid.setBounds(193, 262, 43, 26);
 		contentPane.add(lblTid);
 		
-		JLabel lblInformation = new JLabel("Information");
+		JLabel lblInformation = new JLabel("Information:");
 		lblInformation.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblInformation.setBounds(6, 347, 282, 26);
+		lblInformation.setBounds(6, 355, 282, 26);
 		contentPane.add(lblInformation);
 		
 		//JButton avbrytBtn = new JButton("Avbryt");
@@ -232,12 +233,13 @@ public class jpegGUI extends JFrame {
 
 		panel = new Panel();
 		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(377, 31, 1000, 650);
+		panel.setBounds(377, 42, widthPreview,heightPreview);
 		contentPane.add(panel);
 		panel.setLayout(null);
 				
 		JButton sparaBtn = new JButton("Spara bilden");
-		sparaBtn.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		sparaBtn.setForeground(Color.WHITE);
+		sparaBtn.setFont(new Font("Futura Hv BT", Font.PLAIN, 20));
 		sparaBtn.setBackground(Color.RED);
 		sparaBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -248,10 +250,10 @@ public class jpegGUI extends JFrame {
 		        String path = fDialog.getDirectory() + fDialog.getFile();
 		        File f = new File(path);
 				try {
-					int width = 1000, height = 650;
+					//int width = 1000, height = 650;
 					Container c = getContentPane();
 					c = panel;
-					c.setSize(width, height);
+					c.setSize(widthPreview, heightPreview);
 					BufferedImage bi = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
 				    c.paint(bi.getGraphics());	
 				    ImageIO.write(bi, "PNG", new File(path + ".png"));
@@ -263,97 +265,104 @@ public class jpegGUI extends JFrame {
 			    }
 			}
 		});
-		sparaBtn.setBounds(1194, 689, 183, 47);
+		sparaBtn.setBounds(1363, 696, 166, 47);
 		contentPane.add(sparaBtn);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 377, 365, 359);
+		scrollPane.setBounds(6, 384, 365, 359);
 		contentPane.add(scrollPane);
 		
 		JTextArea infoField = new JTextArea();
+		infoField.setFont(new Font("Sabon", Font.PLAIN, 22));
 		infoField.setBorder(new EmptyBorder(10, 10, 10, 10));
 		infoField.setWrapStyleWord(true);
 		infoField.setLineWrap(true);
 		scrollPane.setViewportView(infoField);
 		
 		JButton infoBtn = new JButton("Ok");
+		infoBtn.setFont(new Font("Futura Hv BT", Font.PLAIN, 16));
 		infoBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				infoTextArea.setText(infoField.getText());
 			}
 		});
-		infoBtn.setBounds(377, 689, 65, 47);
+		infoBtn.setBounds(377, 696, 65, 47);
 		contentPane.add(infoBtn);
 		
 		tidField = new JTextField();
 		tidField.setFont(new Font("Futura", Font.PLAIN, 15));
 		tidField.setColumns(10);
-		tidField.setBounds(193, 284, 104, 47);
+		tidField.setBounds(193, 292, 104, 47);
 		contentPane.add(tidField);
 		//PromptSupport.setPrompt("E.g. 12:00", tidField);
 		
 		
 		JLabel lblFrhandsgrandska = new JLabel("F\u00F6rhandsgrandska\r\n");
 		lblFrhandsgrandska.setFont(new Font("Futura", Font.PLAIN, 16));
-		lblFrhandsgrandska.setBounds(383, -1, 150, 26);
+		lblFrhandsgrandska.setBounds(377, 10, 150, 26);
 		contentPane.add(lblFrhandsgrandska);
+		
+		uploadBildLabel = new JLabel("Din bild: \n550 x 500 pixlar");
+		uploadBildLabel.setFont(new Font("Futura Hv BT", Font.PLAIN, 20));
+		uploadBildLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		uploadBildLabel.setForeground(Color.WHITE);
+		uploadBildLabel.setBounds(566, 85, 550, 500);
+		
+		panel.add(uploadBildLabel);
 		
 		rubrikLabel = new JLabel("Skriv en lockande rubrik");
 		rubrikLabel.setBackground(Color.DARK_GRAY);
-		rubrikLabel.setFont(new Font("Futura", Font.PLAIN, 28));
-		rubrikLabel.setForeground(Color.WHITE);
+		rubrikLabel.setFont(new Font("Futura Hv BT", Font.PLAIN, 28));
+		rubrikLabel.setForeground(Color.BLACK);
 		rubrikLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		rubrikLabel.setBounds(157, 16, 714, 53);
+		rubrikLabel.setBounds(149, 16, 967, 53);
 		panel.add(rubrikLabel);
 		
-		
-		logoLabel = new JLabel("");
-		logoLabel.setIcon(new ImageIcon("/Users/Marcus/Documents/STUDIER/IxD/PROGRAMMING/GitHub/IdkInfoG8/test/Pics/logowhitetxt.png"));
-		logoLabel.setBounds(6, 6, 100, 131);
-		panel.add(logoLabel);
-		
 		datumlabel = new JLabel("");
-		datumlabel.setFont(new Font("Futura", Font.PLAIN, 15));
-		datumlabel.setHorizontalAlignment(SwingConstants.CENTER);
-		datumlabel.setBounds(6, 363, 100, 21);
+		datumlabel.setBackground(Color.WHITE);
+		datumlabel.setFont(new Font("Futura Hv BT", Font.PLAIN, 17));
+		datumlabel.setHorizontalAlignment(SwingConstants.LEFT);
+		datumlabel.setBounds(161, 163, 368, 21);
 		panel.add(datumlabel);
 		
 		tidLabel = new JLabel("");
-		tidLabel.setFont(new Font("Futura", Font.PLAIN, 15));
-		tidLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		tidLabel.setBounds(6, 467, 100, 21);
+		tidLabel.setBackground(Color.WHITE);
+		tidLabel.setFont(new Font("Futura Hv BT", Font.PLAIN, 17));
+		tidLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		tidLabel.setBounds(161, 194, 368, 21);
 		panel.add(tidLabel);
 		
 		JLabel label = new JLabel("PLATS: ");
 		label.setBackground(Color.WHITE);
-		label.setFont(new Font("Futura", Font.PLAIN, 15));
+		label.setFont(new Font("Futura Hv BT", Font.PLAIN, 15));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(6, 235, 69, 21);
+		label.setBounds(32, 132, 85, 21);
 		panel.add(label);
 		label.setOpaque(true);
 		
 		
 		JLabel label_1 = new JLabel("DATUM: ");
 		label_1.setBackground(Color.WHITE);
-		label_1.setFont(new Font("Futura", Font.PLAIN, 15));
+		label_1.setFont(new Font("Futura Hv BT", Font.PLAIN, 15));
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setBounds(6, 333, 69, 21);
+		label_1.setBounds(32, 163, 85, 21);
 		panel.add(label_1);
 		label_1.setOpaque(true);
 		
 		JLabel label_2 = new JLabel("TID: ");
 		label_2.setBackground(Color.WHITE);
-		label_2.setFont(new Font("Futura", Font.PLAIN, 15));
+		label_2.setFont(new Font("Futura Hv BT", Font.PLAIN, 15));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setBounds(6, 430, 69, 21);
+		label_2.setBounds(32, 194, 85, 21);
 		panel.add(label_2);
 		label_2.setOpaque(true);
 		
 		platsLabel = new JLabel("");
-		platsLabel.setFont(new Font("Futura", Font.PLAIN, 15));
-		platsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		platsLabel.setBounds(6, 268, 100, 21);
+		platsLabel.setBackground(Color.WHITE);
+		platsLabel.setFont(new Font("Futura Hv BT", Font.PLAIN, 17));
+		platsLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		platsLabel.setBounds(161, 132, 368, 21);
 		panel.add(platsLabel);
 		
 		infoTextArea = new JTextArea();
@@ -362,34 +371,45 @@ public class jpegGUI extends JFrame {
 		infoTextArea.setWrapStyleWord(true);
 		infoTextArea.setEditable(false);
 		infoTextArea.setLineWrap(true);
-		infoTextArea.setFont(new Font("Futura", Font.PLAIN, 15));
-		infoTextArea.setBounds(157, 85, 319, 500);
+		infoTextArea.setFont(new Font("Sabon", Font.PLAIN, 22));
+		infoTextArea.setBounds(149, 232, 402, 353);
 		panel.add(infoTextArea);
 		infoTextArea.setOpaque(true);
 		
-		uploadBildLabel = new JLabel("Din bild: \n500 x 500 pixlar");
-		uploadBildLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		uploadBildLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		uploadBildLabel.setForeground(Color.WHITE);
-		uploadBildLabel.setBounds(491, 85, 500, 500);
+		JLabel lblRubrikruta = new JLabel("");
+		lblRubrikruta.setOpaque(true);
+		lblRubrikruta.setBackground(Color.WHITE);
+		lblRubrikruta.setBounds(0, 16, 1152, 51);
+		panel.add(lblRubrikruta);
 		
-		panel.add(uploadBildLabel);
+		JLabel label_3 = new JLabel("");
+		label_3.setOpaque(true);
+		label_3.setBackground(Color.WHITE);
+		label_3.setBounds(985, 593, 167, 39);
+		panel.add(label_3);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setWrapStyleWord(true);
+		textArea.setOpaque(true);
+		textArea.setLineWrap(true);
+		textArea.setFont(new Font("Sabon", Font.PLAIN, 22));
+		textArea.setEditable(false);
+		textArea.setBorder(new EmptyBorder(10, 10, 10, 10));
+		textArea.setBounds(149, 85, 402, 148);
+		panel.add(textArea);
 		
 		JButton button = new JButton("Ok");
+		button.setFont(new Font("Futura Hv BT", Font.PLAIN, 16));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				datumlabel.setText(datumField.getText());
-				//tidLabel.setText(tidField.getText());
-				
 				datumField.setText("");
-				//tidField.setText("");
-				
 				datumlabel.setOpaque(true);
-				//tidLabel.setOpaque(true);
 			}
 		});
-		button.setBounds(125, 284, 53, 47);
+		button.setBounds(125, 292, 65, 47);
 		contentPane.add(button);
+		
 		
 
 		
