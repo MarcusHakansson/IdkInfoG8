@@ -1,6 +1,6 @@
 # IdkInfoG8
 
-![](https://github.com/MarcusHakansson/IdkInfoG8/blob/master/Infomall_Live1.jpg)
+![](https://github.com/MarcusHakansson/IdkInfoG8/blob/master/MAH_Infomall_Bild.jpg)
 
 Here can you read and follow along in our school work.
 
