@@ -1,5 +1,7 @@
 # IdkInfoG8
 
+![](http://)
+
 Here can you read and follow along in our school work.
 
 This project was developed by Marcus Håkansson, Marianne Bansell, Jakob Håkonsson, Mattias Wendt and Kelly Gelevska. We are interaction design students at Malmö University, Sweden.
