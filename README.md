@@ -1,6 +1,6 @@
 # IdkInfoG8
 
-![](http://)
+![](https://github.com/MarcusHakansson/IdkInfoG8/blob/master/Infomall_Live1.jpg)
 
 Here can you read and follow along in our school work.
 
