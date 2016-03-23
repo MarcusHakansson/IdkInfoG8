@@ -7,7 +7,6 @@ import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Panel;
 import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -19,7 +18,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -27,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 
+//import org.jdesktop.swingx.prompt.PromptSupport;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -35,31 +34,33 @@ import java.awt.Container;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
 
 
 
 public class jpegGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField uploadField;
 	private JTextField rubrikField;
 	private JTextField datumField;
 	private JTextField platsField;
 	private JTextField tidField;
 	private JLabel rubrikLabel;
 	private JLabel rubriklabel3;
-	private JLabel logoLabel;
 	private JLabel platsLabel;
 	private JLabel datumlabel;
 	private JLabel tidLabel;
 	private Panel panel;
 	private JTextArea infoTextArea;
-	private JTextArea infoField;
 	private JLabel uploadBildLabel;
 	private static jpegGUI frame;
-	private int width = 500;
-	private int height = 500;
-	
+	private int widthPreviewImage = 550;
+	private int heightPreviewImage = 500;
+	private int widthPreview = 1152;
+	private int heightPreview = 648;
+	private JTextField txtCreators;
 	
 	/**
 	 * Launch the application.
@@ -84,7 +85,7 @@ public class jpegGUI extends JFrame {
 	
 	public jpegGUI() {
 			
-		setIconImage(Toolkit.getDefaultToolkit().getImage(CopyTestPng.class.getResource("/Bilder/MAH_logotyp_original.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(jpegGUI.class.getResource("/Bilder/MAH_logotyp_original.jpg")));
 		setTitle("MAH Infomall");
 		setResizable(false);
 		
@@ -124,26 +125,9 @@ public class jpegGUI extends JFrame {
 		rubrikBtn.setFont(new Font("Futura Hv BT", Font.PLAIN, 16));
 		rubrikBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				rubrikLabel.setForeground(Color.BLACK);
-				
 				rubrikLabel.setText(rubrikField.getText());
-				//String i = rubrikField.getText();
-				//FontMetrics fm = rubrikLabel.getFontMetrics(rubrikLabel.getFont());
-                //int textWidth = fm.stringWidth(i);
-                //int textStart = fm.
-                
 				rubrikField.setText("");
-				
-				//rubriklabel3 = new JLabel("", rubriklabel3.LEFT);
-				//rubriklabel3.setForeground(Color.white);
-				//rubriklabel3.setHorizontalAlignment(SwingConstants.LEFT);
-				//rubriklabel3.setBounds(247-(textWidth/2), 25, textWidth+10, 47);
-				
-				//panel.add(rubriklabel3);
-				//rubriklabel3.setOpaque(true);
-				
-				//System.out.println(i+"=" + textWidth);
 				
 			}
 		});
@@ -410,8 +394,15 @@ public class jpegGUI extends JFrame {
 		button.setBounds(125, 292, 65, 47);
 		contentPane.add(button);
 		
-		
-
-		
+		txtCreators = new JTextField();
+		txtCreators.setBorder(null);
+		txtCreators.setEditable(false);
+		txtCreators.setBackground(SystemColor.menu);
+		txtCreators.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtCreators.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtCreators.setText("Created by:  M. Bansell, K. Gelevska, M. H\u00E5kansson, J. H\u00E5konsson, M. Wendt, IDk15, MAH");
+		txtCreators.setBounds(727, 723, 578, 26);
+		contentPane.add(txtCreators);
+		txtCreators.setColumns(10);
 	}
 }
